@@ -9,7 +9,6 @@ the reaction barrier together with the location of every output file.
 |---|---|---|
 | `run_goeneb_mace.py` | [MACE](https://github.com/ACEsuit/mace): your own checkpoint, or the MACE-OFF / MACE-MP foundation models | NEB on a trained MACE model |
 | `run_goeneb_uma.py` | Meta's [UMA](https://github.com/facebookresearch/fairchem) (fairchem-core) | NEB with a general-purpose foundation model |
-| `run_goeneb_tblite.py` | [tblite](https://github.com/tblite/tblite) GFN2-xTB / GFN1-xTB | Fast, independent cross-check at a different level of theory |
 | `run_goeneb_mace_ensemble.py` | An ensemble of MACE models, with the path driven by their mean | Active learning: stops as soon as the models disagree and saves the path for relabelling |
 
 Because the wrappers drive GöNEB itself, you get GöNEB's tangents, spring forces, step predictors,
@@ -21,7 +20,6 @@ climbing image, convergence criteria and output files. Only the energy surface c
 goeneb_runner_common.py      shared code: input file, running GöNEB, barrier, shared CLI options
 run_goeneb_mace.py           MACE wrapper
 run_goeneb_uma.py            UMA wrapper
-run_goeneb_tblite.py         tblite wrapper
 run_goeneb_mace_ensemble.py  MACE ensemble wrapper
 goeneb/                      GöNEB, with the MACE / UMA / MACE-ensemble interfaces added
 tests/                       tests that run without any ML model (see "Running the tests")
@@ -46,7 +44,7 @@ MACE and fairchem-core pin different PyTorch versions, so use **two virtual envi
 | Environment | For | Install |
 |---|---|---|
 | `MACE_venv` | `run_goeneb_mace.py`, `run_goeneb_mace_ensemble.py` | `pip install mace-torch ase chemcoord matplotlib` |
-| `.venv` | `run_goeneb_uma.py`, `run_goeneb_tblite.py`, tests | `pip install fairchem-core tblite ase chemcoord matplotlib pytest` |
+| `.venv` | `run_goeneb_uma.py`, tests | `pip install fairchem-core tblite ase chemcoord matplotlib pytest` |
 
 ```bash
 git clone <this-repository> goeneb-wrappers
@@ -92,10 +90,6 @@ MACE_venv/bin/python run_goeneb_mace.py \
 .venv/bin/python run_goeneb_uma.py \
     --starttraj tests/fixtures/traj.xyz --uma-model uma-s-1p1 --device cuda
 
-# GFN2-xTB with 8 threads
-.venv/bin/python run_goeneb_tblite.py \
-    --start tests/fixtures/start.xyz --end tests/fixtures/end.xyz \
-    --method GFN2-xTB --n-threads 8
 
 # MACE ensemble for active learning
 MACE_venv/bin/python run_goeneb_mace_ensemble.py \
@@ -125,7 +119,6 @@ final_path = result['resultdir'] / 'finaltraj.xyz'
 |---|---|
 | `run_goeneb_mace.run_mace_neb` | `start_xyz, end_xyz, mace_model_path, jobdir` |
 | `run_goeneb_uma.run_uma_neb` | `start_xyz, end_xyz, jobdir` |
-| `run_goeneb_tblite.run_tblite_neb` | `start_xyz, end_xyz, jobdir` |
 | `run_goeneb_mace_ensemble.run_mace_ensemble_neb` | `start_xyz, end_xyz, model_paths, threshold_eV, jobdir` |
 
 All other arguments are keyword-only. Every function returns a dict:
@@ -187,12 +180,6 @@ change it. GöNEB's own [README](goeneb/README.md) documents the underlying keyw
 | `batch_images` | `--uma-batch` | off | All images in one forward pass. Faster, but one failing image fails the whole iteration |
 | `device` | `--device` | `cpu` | `cpu` / `cuda` |
 
-**tblite** (`run_tblite_neb`):
-| Python | CLI | Default | |
-|---|---|---|---|
-| `method_keywords` | `--method` | `GFN2-xTB` | or `GFN1-xTB` |
-| `n_threads` | `--n-threads` | `1` | OpenMP threads |
-| `charge`, `spin` | `--charge`, `--spin` | `0`, `1` | Total charge and multiplicity 2S+1 |
 
 **MACE ensemble** (`run_mace_ensemble_neb`): see the next section.
 
@@ -249,43 +236,7 @@ interpolation is reproducible between ensemble runs.
     └── ensemble_uncertainty.json   (ensemble wrapper only)
 ```
 
-## Common workflows
 
-**Continue or refine a run.** Pass the previous `finaltraj.xyz` as `starttraj`. IDPP stays off, so the
-path isn't re-smoothed. A useful pattern is a cheap, stable first pass followed by climbing image:
-
-```python
-first = run_uma_neb('r.xyz', 'p.xyz', jobdir='runs/r1/sd', step_pred_method='sd',
-                    climbing_image=False, maxiter=100)
-final = run_uma_neb(starttraj=first['resultdir'] / 'finaltraj.xyz', jobdir='runs/r1/ci')
-```
-
-**Check convergence.** A run that stops at `maxiter` reports a barrier whether or not it settled. To
-check, plot the barrier and the force measures for every iteration:
-
-```python
-from goeneb_runner_common import plot_convergence_diagnostics
-plot_convergence_diagnostics(result['resultdir'], savepath='diagnostics.png')
-```
-
-A flat barrier curve with forces dropping below the dotted tolerance lines means the run converged.
-If the barrier keeps oscillating, the climbing image is bouncing over the barrier top. Try
-`step_pred_method='sd'`, a smaller `max_step`, or `use_vark=True`.
-
-**Cross-check an MLIP barrier.** Run `run_goeneb_tblite.py` on the same `starttraj`. The starting path
-then hasn't been shaped by the model being checked.
-
-## Running the tests
-
-```bash
-.venv/bin/python -m pytest
-```
-
-The tests replace the GöNEB run with a stand-in, so they need no ML models and finish in seconds.
-They compare every wrapper's generated `neb.ini`, return values, files, CLI output and `--help` text
-against the recorded copies in `tests/golden/`. After an intentional change, re-record them with
-`UPDATE_GOLDEN=1 .venv/bin/python -m pytest` and review the diff. `tests/test_bug_fixes.py` holds
-regression tests for fixed bugs.
 
 ## Credits
 
@@ -295,4 +246,3 @@ regression tests for fixed bugs.
   redistributing `goeneb/`.
 - **MACE**: Batatia et al., <https://github.com/ACEsuit/mace>
 - **UMA / fairchem**: Meta FAIR Chemistry, <https://github.com/facebookresearch/fairchem>
-- **tblite**: <https://github.com/tblite/tblite>

@@ -19,3 +19,4 @@ goeneb/testjobs/example_mace/
 WRAPPER_CONTRACT.md
 pytest.ini
 tests/
+run_goeneb_tblite.py
