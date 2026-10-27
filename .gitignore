@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+
+# virtual environments (see README: Installation)
+.venv/
+MACE_venv/
+
+# OS
+.DS_Store
+
+# default job folders created by the run_goeneb_*.py wrappers
+goeneb_*_runs/
+
+# local run leftovers
+goeneb/scripts/output.log
+goeneb/testjobs/example_mace/
+
+WRAPPER_CONTRACT.md
+pytest.ini
+tests/

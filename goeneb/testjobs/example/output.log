@@ -1,0 +1,541 @@
+
+                              .-----------------------------------------------------------.
+  /%%%%%                    .* ########################################################### *.
+  %        *  *       @@@@.* ####|      |######|   |###|            |###|            |###### *.
+  %  %%%  /%%%%\     @@@@@@  ####|       |#####|   |###|   |############|   |######|   |###### *.
+  %    %  %    %     @@@@@@  ####|        |####|   |###|   |############|   |#######|   |####### *.
+  \%%%%%  \%%%%/    .*@@@@  #####|   |#|   |###|   |###|   |############|   |######|   |########## *.
+                  .* ,,,,,,######|   |##|   |##|   |###|           |####|            |############## >
+            @@@@.* ##############|   |###|   |#|   |###|   |############|   |######|   |########## .*
+           @@@@@@  ##############|   |####|        |###|   |############|   |#######|   |####### .*
+           @@@@@@  ##############|   |#####|       |###|   |############|   |######|   |###### .*
+          .*@@@@  ###############|   |######|      |###|            |###|            |###### .*
+        .* ,,,,,,######################################################################### .*
+       *----------------------------------------------------------------------------------*
+
+                                   -- THE GÖNEB REACTION PATHWAY FINDER --
+
+                                     Georg-August-University of Göttingen
+
+Warning: directory was given as argument in program call. This requires the directory to include all nessecary files in the correctly named manner.
+Structures are not specified in input-file. The xyz-files are automatically sorted.
+Start structure set to: /path/to/goeneb/testjobs/example/pentadiene-1.xyz
+End structure set to: /path/to/goeneb/testjobs/example/pentadiene-2.xyz
+TS structure set to: None
+Logging is set to info
+Temporary files stored under: 
+/scr/USER/JOB_ID
+IDPP pass is converged after 25 iterations!
+
+Orca interface for EnGrad calculation selected.
+Temporary files stored at: 
+/scr/USER/JOB_ID
+Now calculating: image1
+Now calculating: image2
+Beginning NEB optimization loop.
+
+Iteration no. 1
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:00:26.624597
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 448.919926 kJ/mol
+Approx. Barrier with respect to right end: 448.919051 kJ/mol
+Current max. RMSF:             0.065149 Tol. 0.009450, NO
+Current max. AbsF:             0.242827 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.065149 Tol. 0.009450
+Current max. orthogonal AbsF:  0.242826 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 2
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:00:57.879867
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 424.888041 kJ/mol
+Approx. Barrier with respect to right end: 424.887165 kJ/mol
+Current max. RMSF:             0.055431 Tol. 0.009450, NO
+Current max. AbsF:             0.208990 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.055431 Tol. 0.009450
+Current max. orthogonal AbsF:  0.208990 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 3
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:01:43.475869
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 401.635309 kJ/mol
+Approx. Barrier with respect to right end: 401.634433 kJ/mol
+Current max. RMSF:             0.050642 Tol. 0.009450, NO
+Current max. AbsF:             0.180666 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.050642 Tol. 0.009450
+Current max. orthogonal AbsF:  0.180666 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 4
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:02:08.994606
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 380.148585 kJ/mol
+Approx. Barrier with respect to right end: 380.147709 kJ/mol
+Current max. RMSF:             0.046397 Tol. 0.009450, NO
+Current max. AbsF:             0.148635 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.046397 Tol. 0.009450
+Current max. orthogonal AbsF:  0.148638 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 5
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:02:34.620084
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 360.549163 kJ/mol
+Approx. Barrier with respect to right end: 360.548287 kJ/mol
+Current max. RMSF:             0.040043 Tol. 0.009450, NO
+Current max. AbsF:             0.127542 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.040043 Tol. 0.009450
+Current max. orthogonal AbsF:  0.127553 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 6
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:03:00.877639
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 343.320562 kJ/mol
+Approx. Barrier with respect to right end: 343.319687 kJ/mol
+Current max. RMSF:             0.033736 Tol. 0.009450, NO
+Current max. AbsF:             0.111997 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.033736 Tol. 0.009450
+Current max. orthogonal AbsF:  0.112015 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 7
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:03:26.875757
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 328.444759 kJ/mol
+Approx. Barrier with respect to right end: 328.443883 kJ/mol
+Current max. RMSF:             0.030023 Tol. 0.009450, NO
+Current max. AbsF:             0.090751 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.030023 Tol. 0.009450
+Current max. orthogonal AbsF:  0.090777 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 8
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:03:53.110861
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 315.914250 kJ/mol
+Approx. Barrier with respect to right end: 315.913374 kJ/mol
+Current max. RMSF:             0.025819 Tol. 0.009450, NO
+Current max. AbsF:             0.072448 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.025819 Tol. 0.009450
+Current max. orthogonal AbsF:  0.072441 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 9
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:04:19.386596
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 305.796326 kJ/mol
+Approx. Barrier with respect to right end: 305.795450 kJ/mol
+Current max. RMSF:             0.022126 Tol. 0.009450, NO
+Current max. AbsF:             0.058093 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.022126 Tol. 0.009450
+Current max. orthogonal AbsF:  0.058099 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 10
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:04:45.597533
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 297.697483 kJ/mol
+Approx. Barrier with respect to right end: 297.696607 kJ/mol
+Current max. RMSF:             0.018839 Tol. 0.009450, NO
+Current max. AbsF:             0.053124 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.018839 Tol. 0.009450
+Current max. orthogonal AbsF:  0.053132 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 11
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:05:11.904199
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 290.772903 kJ/mol
+Approx. Barrier with respect to right end: 290.772027 kJ/mol
+Current max. RMSF:             0.016076 Tol. 0.009450, NO
+Current max. AbsF:             0.046801 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.016076 Tol. 0.009450
+Current max. orthogonal AbsF:  0.046811 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 12
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:05:37.959744
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 284.427515 kJ/mol
+Approx. Barrier with respect to right end: 284.426639 kJ/mol
+Current max. RMSF:             0.014050 Tol. 0.009450, NO
+Current max. AbsF:             0.039131 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.014050 Tol. 0.009450
+Current max. orthogonal AbsF:  0.039144 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 13
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:06:03.815168
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 278.452873 kJ/mol
+Approx. Barrier with respect to right end: 278.451997 kJ/mol
+Current max. RMSF:             0.012557 Tol. 0.009450, NO
+Current max. AbsF:             0.030365 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.012557 Tol. 0.009450
+Current max. orthogonal AbsF:  0.030381 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 14
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:06:29.420236
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 272.871958 kJ/mol
+Approx. Barrier with respect to right end: 272.871082 kJ/mol
+Current max. RMSF:             0.011026 Tol. 0.009450, NO
+Current max. AbsF:             0.026227 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.011026 Tol. 0.009450
+Current max. orthogonal AbsF:  0.026236 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 15
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:06:55.299982
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 267.712331 kJ/mol
+Approx. Barrier with respect to right end: 267.711455 kJ/mol
+Current max. RMSF:             0.009427 Tol. 0.009450, YES
+Current max. AbsF:             0.022444 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.009427 Tol. 0.009450
+Current max. orthogonal AbsF:  0.022437 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 16
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:07:21.600309
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 263.037060 kJ/mol
+Approx. Barrier with respect to right end: 263.036184 kJ/mol
+Current max. RMSF:             0.008043 Tol. 0.009450, YES
+Current max. AbsF:             0.019340 Tol. 0.018900, NO
+Current max. orthogonal RMSF:  0.008043 Tol. 0.009450
+Current max. orthogonal AbsF:  0.019329 Tol. 0.018900
+Applying optimization steps.
+Checking for failed images.
+
+Iteration no. 17
+Updating energies and gradients.
+Now calculating: image1
+Now calculating: image2
+Now calculating: image3
+Now calculating: image4
+Now calculating: image5
+Now calculating: image6
+Now calculating: image7
+Now calculating: image8
+Now calculating: image9
+Now calculating: image10
+Now calculating: image11
+Updating tangent vectors.
+Updating springforce gradients.
+Calculating NEB gradients.
+Calculating optimization steps.
+Checking for signals of convergence.
+Wall time elapsed (h:m:s): 0:07:48.041351
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 258.934842 kJ/mol
+Approx. Barrier with respect to right end: 258.933966 kJ/mol
+Current max. RMSF:             0.006649 Tol. 0.009450, YES
+Current max. AbsF:             0.018184 Tol. 0.018900, YES
+Current max. orthogonal RMSF:  0.006649 Tol. 0.009450
+Current max. orthogonal AbsF:  0.018176 Tol. 0.018900
+
+
+Relaxed NEB convergence has been reached after 17 iterations!
+
+
+Final stats of the NEB path:
+
+Wall time elapsed (h:m:s): 0:07:48.295799
+There are 0 failed images in the path.
+Approx. Barrier with respect to left end: 258.934842 kJ/mol
+Approx. Barrier with respect to right end: 258.933966 kJ/mol
+Result trajectory printed under /path/to/results/finaltraj.xyz
+Highest Energy Image printed under /path/to/results/HEI.xyz
+Interpolated TS Guess structure printed under /path/to/results/TS_guess.xyz
+Temporary files deleted.
