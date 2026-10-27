@@ -21,3 +21,4 @@ pytest.ini
 tests/
 golden/
 run_goeneb_tblite.py
+start_traj.xyz

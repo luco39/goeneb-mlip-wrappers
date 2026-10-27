@@ -11,7 +11,7 @@ the reaction barrier together with the location of every output file.
 | `run_goeneb_mace_ensemble.py` | An ensemble of MACE models, with the path driven by their mean | Active learning: stops as soon as the models disagree and saves the path for relabelling |
 
 Because the wrappers drive GöNEB itself, you get GöNEB's tangents, spring forces, step predictors,
-climbing image, convergence criteria and output files.
+etc.
 
 ## Contents
 
