@@ -36,7 +36,7 @@ import json
 from pathlib import Path
 import numpy as np
 
-np.random.seed(343)
+np.random.seed(343)                     ### RANDOMNESS SEEDED HERE FOR REPRODUCIBILITY
 
 from goeneb_runner_common import (make_parser, parse_neb_args, pick_neb_options,  # noqa: E402
                                   resolve_jobdir, run_and_get_barrier,
@@ -77,49 +77,7 @@ def run_mace_ensemble_neb(start_xyz=None, end_xyz=None, model_paths=None,
                           device='cpu', dtype='float64', maxiter=500, verbose='debug',
                           batch_images=False, max_batch_atoms=0,
                           uncertainty_metric='energy'):
-    """Run a GoNEB NEB calculation using an ensemble of MACE models and
-    return the resulting barrier plus uncertainty-trigger info.
-
-    model_paths: list of at least 2 MACE checkpoint paths (a common ensemble
-    size for query-by-committee-style active learning is 5, but this is
-    entirely up to what checkpoints you have trained -- goeneb only requires
-    at least 2 to compute a meaningful disagreement).
-
-    threshold_eV: stop the NEB as soon as the worst image's disagreement
-    exceeds this. Required. Despite the name, its units follow
-    uncertainty_metric: eV for 'energy' (std across models of the per-image
-    energy, after de-meaning each model's own path), eV/Angstrom for 'force'
-    (the worst atom's RMS force disagreement).
-
-    Structures and the remaining NEB options: same as for every
-    run_goeneb_*.py wrapper -- see goeneb_runner_common.write_common_ini()'s
-    docstring for what each does. Climbing image is safe to use here (see
-    this module's docstring).
-
-    Returns a dict with everything barrier_from_results() returns
-    (path_energies_Eh, left/right barrier, jobdir, resultdir, output_log),
-    plus:
-    - 'uncertainty_triggered': bool, whether the run stopped early due to
-      the uncertainty threshold rather than converging or reaching maxiter
-    - 'uncertainty_info': the parsed ensemble_uncertainty.json contents if
-      the driver wrote one (on a trigger, or whenever the running maximum
-      uncertainty improved), else None
-
-    batch_images: pack every image of the path into a single forward pass per
-    model, instead of calling the calculator once per image. An iteration then
-    costs n_models calls rather than n_models x n_images. The models cannot be
-    batched with each other (different weights), only the images within each.
-    Measured ~7x faster on CPU for an 11-image, 15-atom path, with energies
-    bit-identical to the per-image loop and gradients agreeing to 1e-18.
-
-    Unlike the UMA equivalent, a batch that raises is not fatal: that model
-    falls back to the per-image loop for the rest of the run, so a single
-    pathological geometry costs speed rather than the whole path.
-
-    max_batch_atoms: cap the atoms in one forward, so a long path or a large
-    complex is split across several batches instead of exhausting GPU memory.
-    0 (default) means one batch for the whole path.
-    """
+                          
     if threshold_eV is None:
         raise ValueError("threshold_eV is required (the uncertainty threshold, in eV).")
     if model_paths is None or len(model_paths) < 2:

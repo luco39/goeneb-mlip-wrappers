@@ -71,29 +71,7 @@ def run_mace_neb(start_xyz=None, end_xyz=None, mace_model_path=None, jobdir=None
                  use_analytical_springpos=False, tangents='henkjon',
                  device='cpu', dtype='float64', batch_images=False, max_batch_atoms=0,
                  maxiter=500, verbose='debug'):
-    """Run a GoNEB NEB calculation using MACE and return the resulting
-    barrier (and where to find the full results on disk).
 
-    MACE model: pass either mace_model_path (a custom checkpoint) or
-    mace_foundation ('mace_off' / 'mace_mp', with mace_size
-    'small'/'medium'/'large') -- exactly one of the two. device/dtype are
-    passed to the MACE calculator.
-
-    batch_images: pack every image of the path into as few forward passes as
-    possible each iteration instead of one call per image (~7x faster on CPU
-    for an 11-image path, same numbers). A batch that raises is not fatal:
-    that iteration falls back to the per-image loop, which only fails the
-    image that broke.
-
-    max_batch_atoms: cap the atoms in one forward, so a long path or a large
-    complex is split across several batches instead of exhausting GPU memory.
-    0 (default) means one batch for the whole path.
-
-    Structures: either start_xyz and end_xyz, or starttraj (e.g. a previous
-    run's results/finaltraj.xyz to continue it). The remaining options
-    configure the NEB itself and are the same for every run_goeneb_*.py
-    wrapper -- see goeneb_runner_common.write_common_ini()'s docstring for
-    what each does and when to reach for it."""
     if mace_model_path is not None:
         mace_model_path = Path(mace_model_path).resolve()
 

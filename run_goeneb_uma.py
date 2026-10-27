@@ -53,31 +53,7 @@ def run_uma_neb(start_xyz=None, end_xyz=None, jobdir=None, *,
                 use_vark=False, vark_min_fac=0.1,
                 use_analytical_springpos=False, tangents='henkjon',
                 charge=0, spin=1, device='cpu', maxiter=500, verbose='debug'):
-    """Run a GoNEB NEB calculation using UMA and return the resulting barrier
-    (and where to find the full results on disk).
 
-    uma_model is a fairchem-core checkpoint name (default 'uma-s-1p1', same
-    default as run_neb.py). uma_task is the fairchem task name -- 'omol' for
-    molecular systems, which is what charge/spin get attached to per image.
-
-    charge, spin: total charge and multiplicity (spin = 2S+1, i.e. 1 for a
-    closed-shell singlet), passed to UMA for every image.
-
-    batch_images: if True, all images in a given iteration are packed into a
-    single AtomicData batch and sent through the UMA predictor in one forward
-    pass instead of looping image by image -- fewer, bigger calls, which
-    should be noticeably faster, especially on GPU. Tradeoff: a failure
-    anywhere in the batch currently fails every image in that call, rather
-    than just the one bad image the way the per-image loop handles it. This
-    is new and has only been validated against fairchem-core's documented
-    batch-inference API (https://fair-chem.github.io/batch-inference), not
-    against a real run yet -- worth a careful look the first time you use it.
-
-    Structures: either start_xyz and end_xyz, or starttraj (e.g. a previous
-    run's results/finaltraj.xyz to continue it). The remaining options
-    configure the NEB itself and are the same for every run_goeneb_*.py
-    wrapper -- see goeneb_runner_common.write_common_ini()'s docstring for
-    what each does and when to reach for it."""
     jobdir = resolve_jobdir(jobdir, RUNS_DIR)
     model_lines = build_uma_model_lines(uma_model, uma_task, device, batch_images, charge, spin)
 
