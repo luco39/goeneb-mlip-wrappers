@@ -81,7 +81,7 @@ MACE_venv/bin/python run_goeneb_mace.py \
 # MACE foundation model
 MACE_venv/bin/python run_goeneb_mace.py \
     --start path/to/start.xyz --end path/to/end.xyz \
-    --mace-foundation mace_off --mace-size medium
+    --mace-foundation mace_off --mace-size medium --batch-images
 
 # UMA, continuing from an existing path, on a GPU
 .venv/bin/python run_goeneb_uma.py \
@@ -167,6 +167,7 @@ change it. GöNEB's own [README](goeneb/README.md) documents the underlying keyw
 | `mace_foundation` | `--mace-foundation` | – | `mace_off` or `mace_mp` |
 | `mace_size` | `--mace-size` | `medium` | Foundation model size: `small`, `medium`, `large` |
 | `device`, `dtype` | `--device`, `--dtype` | `cpu`, `float64` | `cpu` / `cuda` / `mps`; `float32` / `float64` |
+| `batch_images`, `max_batch_atoms` | `--batch-images`, `--max-batch-atoms` | off, `0` | All images in one forward pass per iteration (same results, several times faster); optionally capped at that many atoms per batch. A batch that fails falls back to image-by-image |
 
 **UMA** (`run_uma_neb`):
 | Python | CLI | Default | |

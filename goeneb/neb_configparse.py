@@ -83,6 +83,8 @@ class Settings:
         self.mace_size = 'medium'
         self.mace_device = 'cpu'
         self.mace_dtype = 'float64'
+        self.mace_batch_images = False
+        self.mace_max_batch_atoms = 0
         self.uma_model = 'uma-s-1p1'
         self.uma_device = 'cpu'
         self.uma_task = 'omol'

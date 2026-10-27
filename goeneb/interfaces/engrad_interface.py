@@ -304,10 +304,17 @@ def setup_mace(atomic_labels, settings):
 
     calculator = build_mace_calculator(settings)
 
+    max_batch_atoms = settings.mace_max_batch_atoms or None
+    if settings.mace_batch_images:
+        logger.info('MACE images will be batched into one forward pass per iteration%s.',
+                    f' (max {max_batch_atoms} atoms per batch)' if max_batch_atoms else '')
+
     engrfunc = mac.mace_path_engrads
     engrfunc_kwargs = {'labels' : atomic_labels,
                        'series_name' : 'image',
-                       'calculator' : calculator}
+                       'calculator' : calculator,
+                       'batch' : settings.mace_batch_images,
+                       'max_batch_atoms' : max_batch_atoms}
 
     return engrfunc, engrfunc_kwargs
 

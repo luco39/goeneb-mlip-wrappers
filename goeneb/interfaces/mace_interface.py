@@ -18,7 +18,8 @@ eV_in_Eh = 27.211386245988  # Hartree per eV
 # ---------------------------------------------------------
 
 
-def mace_path_engrads(image_pvecs, labels, series_name, calculator):
+def mace_path_engrads(image_pvecs, labels, series_name, calculator,
+                      batch=False, max_batch_atoms=None):
     """
     This function calculates the MACE energy and gradient for all images.
     - image_pvecs: list of the flattened image vectors
@@ -27,12 +28,28 @@ def mace_path_engrads(image_pvecs, labels, series_name, calculator):
     - calculator: a pre-loaded ASE-compatible MACE calculator (either a
       MACECalculator built from a local checkpoint, or one returned by
       the mace_off/mace_mp foundation model loaders)
+    - batch: if True, evaluate all images in as few forward passes as
+      possible (see batched_mace_engrads). A batch that raises falls back
+      to the per-image loop, so one bad geometry only fails its own image.
+    - max_batch_atoms: cap on atoms per forward pass when batching
+      (None = one batch for the whole path)
     """
     start_time = time.perf_counter()
     image_names = [f"{series_name}{i+1}" for i in range(len(image_pvecs))]
 
-    results = [calculate_mace_engrad(image, labels, inpfile_name, calculator)
-               for image, inpfile_name in zip(image_pvecs, image_names)]
+    results = None
+    if batch:
+        try:
+            logger.info('Now calculating (batched): %s to %s', image_names[0], image_names[-1])
+            results = list(zip(*batched_mace_engrads(image_pvecs, labels, calculator,
+                                                     max_batch_atoms=max_batch_atoms)))
+        except Exception as e:  # noqa: BLE001
+            logger.warning('Batched MACE evaluation failed (%s); falling back to the '
+                           'per-image loop for this iteration.', e)
+
+    if results is None:
+        results = [calculate_mace_engrad(image, labels, inpfile_name, calculator)
+                   for image, inpfile_name in zip(image_pvecs, image_names)]
 
     energies, engrads = zip(*results)
     elapsed = time.perf_counter() - start_time

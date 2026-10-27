@@ -19,4 +19,5 @@ goeneb/testjobs/example_mace/
 WRAPPER_CONTRACT.md
 pytest.ini
 tests/
+golden/
 run_goeneb_tblite.py
