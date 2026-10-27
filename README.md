@@ -1,8 +1,7 @@
-# GöNEB wrappers for MLIP and xTB reaction paths
+# GöNEB wrappers for MACE and UMA NEB calculations
 
 Python and command-line wrappers for running [GöNEB](https://github.com/cchembio/goeneb)
-nudged elastic band (NEB) calculations with machine-learned interatomic potentials and
-semiempirical xTB. Each wrapper writes the GöNEB input file, runs GöNEB in-process, and hands back
+nudged elastic band (NEB) calculations with machine-learned interatomic potentials. Each wrapper writes the GöNEB input file, runs GöNEB in-process, and hands back
 the reaction barrier together with the location of every output file.
 
 | Wrapper | Energy/gradient source | Typical use |
@@ -22,8 +21,6 @@ run_goeneb_mace.py           MACE wrapper
 run_goeneb_uma.py            UMA wrapper
 run_goeneb_mace_ensemble.py  MACE ensemble wrapper
 goeneb/                      GöNEB, with the MACE / UMA / MACE-ensemble interfaces added
-tests/                       tests that run without any ML model (see "Running the tests")
-WRAPPER_CONTRACT.md          developer notes: exact behaviour the wrappers guarantee
 ```
 
 `goeneb/` is a modified copy of the upstream [GöNEB repository](https://github.com/cchembio/goeneb),
@@ -78,22 +75,22 @@ Every script takes either `--start` and `--end` (two end structures to interpola
 ```bash
 # MACE, own checkpoint
 MACE_venv/bin/python run_goeneb_mace.py \
-    --start tests/fixtures/start.xyz --end tests/fixtures/end.xyz \
+    --start path/to/start.xyz --end path/to/end.xyz \
     --mace-model path/to/model.model
 
 # MACE foundation model
 MACE_venv/bin/python run_goeneb_mace.py \
-    --start tests/fixtures/start.xyz --end tests/fixtures/end.xyz \
+    --start path/to/start.xyz --end path/to/end.xyz \
     --mace-foundation mace_off --mace-size medium
 
 # UMA, continuing from an existing path, on a GPU
 .venv/bin/python run_goeneb_uma.py \
-    --starttraj tests/fixtures/traj.xyz --uma-model uma-s-1p1 --device cuda
+    --starttraj path/to/traj.xyz --uma-model uma-s-1p1 --device cuda
 
 
 # MACE ensemble for active learning
 MACE_venv/bin/python run_goeneb_mace_ensemble.py \
-    --start tests/fixtures/start.xyz --end tests/fixtures/end.xyz \
+    --start path/to/start.xyz --end path/to/end.xyz \
     --model-paths m0.model,m1.model,m2.model,m3.model,m4.model \
     --threshold 0.05
 ```
