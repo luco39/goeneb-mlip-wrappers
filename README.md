@@ -12,7 +12,7 @@ the reaction barrier together with the location of every output file.
 | `run_goeneb_mace_ensemble.py` | An ensemble of MACE models, with the path driven by their mean | Active learning: stops as soon as the models disagree and saves the path for relabelling |
 
 Because the wrappers drive GöNEB itself, you get GöNEB's tangents, spring forces, step predictors,
-climbing image, convergence criteria and output files. Only the energy surface changes.
+climbing image, convergence criteria and output files.
 
 ## Contents
 
@@ -27,7 +27,7 @@ WRAPPER_CONTRACT.md          developer notes: exact behaviour the wrappers guara
 ```
 
 `goeneb/` is a modified copy of the upstream [GöNEB repository](https://github.com/cchembio/goeneb),
-taken at commit `3d59e4d` ("Better support for freezing atoms"); see upstream for its history. It adds:
+taken at commit `3d59e4d` ("Better support for freezing atoms"); see upstream for its history. Here, a number of changes have been made:
 - `interfaces/mace_interface.py`, `interfaces/uma_interface.py` and `interfaces/mace_ensemble_interface.py`,
   plus their settings in `neb_configparse.py` and `interfaces/engrad_interface.py`;
 - a hook that lets an interface stop the optimisation early (`neb_optimizer.py`, `basic_neb.py`, `neb.py`);
@@ -39,7 +39,7 @@ next to itself. To use a GöNEB checkout somewhere else, set the `GOENEB_PATH` e
 
 ## Installation
 
-MACE and fairchem-core pin different PyTorch versions, so use **two virtual environments**:
+Annoyingly, MACE and fairchem-core require different PyTorch versions because of some e3nn incompatibility. There's probably a cleaner solution to this, but I just used two separate virtual environments:
 
 | Environment | For | Install |
 |---|---|---|
@@ -68,7 +68,7 @@ Additional notes:
   then run `huggingface-cli login` once on each machine.
 - **MACE foundation models** are downloaded to `~/.cache/mace` the first time you use them.
 - **chemcoord** is only needed for `interp_mode='internal'` (the default). With `cartesian` or
-  `geodesic` interpolation you can leave it out.
+  `geodesic` interpolation you can leave it out. Geodesic is the recommended interpolation method anyway.
 
 ## Quick start: command line
 
